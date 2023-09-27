@@ -3,13 +3,29 @@
 
 <table border="1">
   <tbody>
+  <tr>
+    <th>
+      ID
+    </th>
+    <th>
+      Image
+    </th>
+    <th>
+      Name
+    </th>
+    <th>
+      Dob
+    </th>
+    <th>
+    </th>
+  </tr>
     <% @actors.map{|actor|%>
       <tr>
         <td><%= actor.id %></td>
-        <td><img src=<%actor.image%> /></td>
+        <td><img src=<%= actor.image %> /></td>
         <td><%= actor.name %></td>
         <td><%= actor.dob%></td>
-        <td><a href="/actors/<% actor.id %>">Show details</a><td>
+        <td><a href="/actors/<%= actor.id %>">Show details</a><td>
       </tr>
     <% } %>
   </tbody>
