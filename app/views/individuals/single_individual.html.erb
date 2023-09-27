@@ -45,3 +45,55 @@
     <%= @personal_info.updated_at %>
   </dd>
 </dl>
+<hr>
+
+<% if @type == "Director" %>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tbody>
+    <tr>
+      <th>
+        ID
+      </th>
+
+      <th>
+        Image
+      </th>
+
+      <th>
+        Title
+      </th>
+
+      <th>
+        Year
+      </th>
+
+      <th>
+        Director
+      </th>
+
+      <th>
+      </th>
+    </tr>
+    <% @filmography.each{ |film| %>
+      <tr>
+      <td><%= film.id%> </td>
+
+      <td><img src="<%= film.image%>" style="width:250px;"></td>
+
+      <td>T<%= film.title%></td>
+
+      <td><%= film.year%></td>
+
+      <td><%= @personal_info.name%></td>
+
+      <td><a href="/movies/<%= film.id%>">Show details</a></td>
+    </tr>
+    <% } %>
+    
+  </tbody>
+</table>
+
+<% end %>

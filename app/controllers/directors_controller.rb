@@ -13,6 +13,8 @@ class DirectorsController < ApplicationController
 
     @personal_info = Director.where({:id => @id}).at(0)
 
+    @filmography = Movie.where({:director_id => @id})
+
     render({:template => "individuals/single_individual"})
   end
 
