@@ -29,7 +29,7 @@
         <td><%= movie.title %></td>
         <td><%= movie.year%></td>
         <td><%= Director.where({:id => movie.director_id}).at(0).name %></td>
-        <td><a href="/<%= @type %>/<%= movie.id %>">Show details</a><td>
+        <td><a href="/movies/<%= movie.id %>">Show details</a><td>
       </tr>
     <% } %>
   </tbody>
