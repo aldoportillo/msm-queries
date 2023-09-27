@@ -1,7 +1,7 @@
 class DirectorsController < ApplicationController
 
   def get_directors
-    @directors = Director.all
+    @people = Director.all
     @type = "directors"
 
     render({:template => "individuals/all_individuals"})
@@ -11,7 +11,7 @@ class DirectorsController < ApplicationController
     @id = params.fetch("id")
     @type = "Director"
 
-    @director_info = Director.where({:id => @id}).at(0)
+    @personal_info = Director.where({:id => @id}).at(0)
 
     render({:template => "individuals/single_individual"})
   end
