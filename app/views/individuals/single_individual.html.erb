@@ -3,97 +3,72 @@
 <hr>
 
 <dl>
-  <dt>
-    Name
-  </dt>
-  <dd>
-    <%= @personal_info.name %>
-  </dd>
-
-  <dt>
-    Dob
-  </dt>
-  <dd>
-    <%= @personal_info.dob %>
-  </dd>
-
-  <dt>
-    Bio
-  </dt>
-  <dd>
-    <%= @personal_info.bio %>
-  </dd>
-
-  <dt>
-    Image
-  </dt>
-  <dd>
-    <img src=<%= @personal_info.image %> style="width:250px;">
-  </dd>
-
-  <dt>
-    Created at
-  </dt>
-  <dd>
-    <%= @personal_info.created_at %>
-  </dd>
-
-  <dt>
-    Updated at
-  </dt>
-  <dd>
-    <%= @personal_info.updated_at %>
-  </dd>
+  <dt>Name</dt>
+  <dd><%= @personal_info.name %></dd>
+  <dt>Dob</dt>
+  <dd><%= @personal_info.dob %></dd>
+  <dt>Bio</dt>
+  <dd><%= @personal_info.bio %></dd>
+  <dt>Image</dt>
+  <dd><img src=<%= @personal_info.image %> style="width:250px;"></dd>
+  <dt>Created at</dt>
+  <dd><%= @personal_info.created_at %></dd>
+  <dt>Updated at</dt>
+  <dd><%= @personal_info.updated_at %></dd>
 </dl>
 <hr>
 
-<% if @type == "Director" %>
-
 <h2>Filmography</h2>
 
-<table border="1">
-  <tbody>
-    <tr>
-      <th>
-        ID
-      </th>
+<% if @type == "Director" %>
 
-      <th>
-        Image
-      </th>
-
-      <th>
-        Title
-      </th>
-
-      <th>
-        Year
-      </th>
-
-      <th>
-        Director
-      </th>
-
-      <th>
-      </th>
-    </tr>
-    <% @filmography.each{ |film| %>
+  <table border="1">
+    <tbody>
       <tr>
-      <td><%= film.id%> </td>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th></th>
+      </tr>
+      <% @filmography.each{ |film| %>
+        <tr>
+          <td><%= film.id%> </td>
 
-      <td><img src="<%= film.image%>" style="width:250px;"></td>
+          <td><img src="<%= film.image%>" style="width:250px;"></td>
 
-      <td>T<%= film.title%></td>
+          <td><%= film.title%></td>
 
-      <td><%= film.year%></td>
+          <td><%= film.year%></td>
 
-      <td><%= @personal_info.name%></td>
+          <td><%= @personal_info.name%></td>
 
-      <td><a href="/movies/<%= film.id%>">Show details</a></td>
+          <td><a href="/movies/<%= film.id%>">Show details</a></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+<%  elsif @type == "Actor" %>
+  <table border="1">
+    <tbody>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Director</th>
+      <th>Character name</th>
+      <th></th>
     </tr>
-    <% } %>
-    
-  </tbody>
-</table>
+      <%@characters.each{ |character| %>
+        <tr>
+          <td>The Shawshank Redemption</td>
+          <td>1994</td>
+          <td>Frank Darabont</td>
+          <td><%= character.name %></td>
+          <td><a href="/movies/<%= character.movie_id %>">Show details</a></td>
+        </tr>
+      <% } %>
+    </tbody>  
+  </table>
 
 <% end %>
