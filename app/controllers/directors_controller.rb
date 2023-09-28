@@ -20,14 +20,14 @@ class DirectorsController < ApplicationController
 
   def get_oldest_director
 
-    @director = Director.order(:dob).at(0)
+    @director = Director.order(:dob).where.not({ :dob => nil }).first
     @type = "oldest"
 
     render({:template => "individuals/director"})
   end
 
   def get_youngest_director
-    @director = Director.order(:dob).at(-1)
+    @director = Director.order(:dob).where.not({ :dob => nil }).last
     @type = "youngest"
 
     render({:template => "individuals/director"})
