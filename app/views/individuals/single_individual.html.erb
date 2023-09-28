@@ -61,9 +61,9 @@
     </tr>
       <%@characters.each{ |character| %>
         <tr>
-          <td>The Shawshank Redemption</td>
-          <td>1994</td>
-          <td>Frank Darabont</td>
+          <td><%= Movie.where({:id => character.movie_id}).at(0).title %></td>
+          <td><%= Movie.where({:id => character.movie_id}).at(0).year %></td>
+          <td><%= Director.where({:id => Movie.where({:id => character.movie_id}).at(0).director_id}).at(0).name %></td>
           <td><%= character.name %></td>
           <td><a href="/movies/<%= character.movie_id %>">Show details</a></td>
         </tr>
